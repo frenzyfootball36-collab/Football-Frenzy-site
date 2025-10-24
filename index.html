@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FOOTBALL FRENZY</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://images.unsplash.com/photo-1547347298-4074fc3086f4?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      backdrop-filter: blur(6px);
+      color: white;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 15px 20px;
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+      letter-spacing: 2px;
+      z-index: 10;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 8px 15px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00ffcc;
+    }
+
+    main {
+      position: relative;
+      padding: 20px;
+    }
+
+    section {
+      margin-bottom: 40px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    h2 {
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-align: center;
+      border-bottom: 2px solid #00ffcc;
+      padding-bottom: 10px;
+    }
+
+    iframe {
+      border-radius: 10px;
+    }
+
+    .ad {
+      text-align: center;
+      margin: 15px 0;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.9);
+      padding: 20px;
+      text-align: center;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #00ffcc;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .quiz-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .question {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background: #00ffcc;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .options button:hover {
+      background: #00cba9;
+    }
+
+    #nextBtn {
+      background: #ffcc00;
+      color: #000;
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: none;
+      font-weight: bold;
+    }
+
+    #score {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      h2 { font-size: 22px; }
+      header { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <header>𝑭𝑶𝑶𝑻𝑩𝑨𝑳𝑳 𝑭𝑹𝑬𝑵𝒁𝒀</header>
+
+  <nav>
+    <a href="#live">Live Score</a>
+    <a href="#facts">Facts</a>
+    <a href="#stats">Stats</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+    <div class="ad">[Top Banner Ad Placeholder]</div>
+
+    <!-- LIVE SCORE SECTION -->
+    <section id="live">
+      <h2>⚽ Live Score</h2>
+      <iframe src="https://www.scorebat.com/embed/livescore/" frameborder="0" width="100%" height="600" allowfullscreen></iframe>
+    </section>
+
+    <!-- FACTS SECTION -->
+    <section id="facts">
+      <h2>🧠 Football Facts</h2>
+      <article>
+        <p>⚡ Cristiano Ronaldo has scored in every minute of a match from 1' to 90'.</p>
+        <p>🔥 Lionel Messi scored 91 goals in 2012 — a world record.</p>
+        <p>🏆 Brazil is the only team to have played in every World Cup since 1930.</p>
+      </article>
+      <div class="ad">[In-article Ad Placeholder]</div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section id="stats">
+      <h2>📊 Football Stats</h2>
+      <iframe src="https://www.scorebat.com/embed/standings/" frameborder="0" width="100%" height="600" allowfullscreen></iframe>
+    </section>
+
+    <!-- QUIZ SECTION -->
+    <section id="quiz">
+      <h2>🧩 Football Quiz</h2>
+      <div class="quiz-container">
+        <div id="questionContainer">
+          <div class="question" id="question">Question text</div>
+          <div class="options" id="options"></div>
+          <button id="nextBtn">Next</button>
+          <div id="score"></div>
+        </div>
+        <div class="ad">[Quiz Ad Placeholder]</div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+      <h2>ℹ️ About Us</h2>
+      <p><strong>Football Frenzy</strong> is your home for everything football — from live scores and stats to fun facts and football quizzes.
+      We bring fans closer to the beautiful game with updates, history, and knowledge tests.</p>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+      <h2>📬 Contact Us</h2>
+      <p><strong>Email:</strong> footballfrenzy@gmail.com</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Football Frenzy | All Rights Reserved</p>
+    <div class="ad">[Footer Ad Placeholder]</div>
+  </footer>
+
+  <script>
+    const quizData = [
+      { question: "Which country has won the most FIFA World Cups?", options: ["Brazil", "Germany", "Italy", "Argentina"], answer: "Brazil" },
+      { question: "Who won the Ballon d'Or in 2023?", options: ["Messi", "Haaland", "Mbappe", "Lewandowski"], answer: "Messi" },
+      { question: "Which club has the most UEFA Champions League titles?", options: ["AC Milan", "Barcelona", "Real Madrid", "Liverpool"], answer: "Real Madrid" },
+      { question: "Who is the Premier League's all-time top scorer?", options: ["Harry Kane", "Wayne Rooney", "Alan Shearer", "Sergio Aguero"], answer: "Alan Shearer" },
+      { question: "In which year did France win their first World Cup?", options: ["1994", "1998", "2002", "2006"], answer: "1998" },
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    const questionEl = document.getElementById('question');
+    const optionsEl = document.getElementById('options');
+    const nextBtn = document.getElementById('nextBtn');
+    const scoreEl = document.getElementById('score');
+
+    function loadQuestion() {
+      const current = quizData[currentQuestion];
+      questionEl.textContent = current.question;
+      optionsEl.innerHTML = "";
+      current.options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.textContent = opt;
+        btn.onclick = () => selectAnswer(opt);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(selected) {
+      const correct = quizData[currentQuestion].answer;
+      if (selected === correct) score++;
+      nextBtn.style.display = "block";
+    }
+
+    nextBtn.addEventListener("click", () => {
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+        nextBtn.style.display = "none";
+      } else {
+        showScore();
+      }
+    });
+
+    function showScore() {
+      questionEl.textContent = `You scored ${score} / ${quizData.length}!`;
+      optionsEl.innerHTML = "";
+      nextBtn.style.display = "none";
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>
