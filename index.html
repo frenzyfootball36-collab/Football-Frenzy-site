@@ -1,229 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>100+ Football Facts — Football Frenzy</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Football Frenzy</title>
   <style>
-    :root{
-      --bg:#ffffff;
-      --text:#111827;
-      --muted:#6b7280;
-      --accent:#00b7b0;
-      --card:#fbffff;
-      --shadow: 0 10px 30px rgba(16,24,40,0.06);
-      --radius:12px;
-      --maxw:980px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:var(--bg);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-    }
-    .container{max-width:var(--maxw); margin:28px auto; padding:0 18px;}
-
-    header{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom:18px;
-    }
-    header img{width:56px; height:56px; border-radius:8px; object-fit:contain}
-    header h1{margin:0; font-family:"Merriweather", serif; font-size:20px}
-
-    .top-actions{margin-left:auto; display:flex; gap:8px}
-    .btn{padding:10px 14px; border-radius:999px; text-decoration:none; font-weight:700; color:white; background:var(--accent)}
-    .btn.ghost{background:transparent; border:1px solid rgba(0,0,0,0.06); color:var(--text)}
-
-    .hero{
-      background:linear-gradient(180deg,#ffffff,#f8fffe);
-      padding:18px;
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      margin-bottom:18px;
-    }
-    .hero h2{margin:0 0 8px 0; font-family:"Merriweather", serif}
-    .hero p{margin:0; color:var(--muted)}
-
-    /* facts list */
-    .facts-grid{
-      display:grid;
-      grid-template-columns: repeat(2,1fr);
-      gap:12px;
-      margin-top:16px;
-    }
-    .fact-card{
-      background:white;
-      border-radius:10px;
-      padding:12px;
-      border-left:4px solid var(--accent);
-      box-shadow: 0 6px 16px rgba(16,24,40,0.04);
-      font-size:14px;
-      color:var(--text);
+    /* --- GLOBAL STYLE --- */
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background-color: #ffffff;
+      color: #222;
+      line-height: 1.6;
     }
 
-    footer{margin-top:22px; text-align:center; color:var(--muted); font-size:14px}
+    header {
+      text-align: center;
+      padding: 25px 15px;
+      font-size: 36px;
+      letter-spacing: 2px;
+      font-weight: 600;
+      border-bottom: 2px solid #ddd;
+    }
 
-    @media (max-width:760px){ .facts-grid{grid-template-columns:1fr} }
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      font-family: 'Georgia', serif;
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 25px;
+      color: #111;
+    }
+
+    /* --- LIVESCORE --- */
+    .live-score {
+      background: #f7f7f7;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    /* --- FACTS --- */
+    .facts-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .fact {
+      background: #fafafa;
+      border-radius: 10px;
+      padding: 15px;
+      border: 1px solid #eee;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    }
+
+    /* --- QUIZ --- */
+    .quiz-container {
+      background: #f9f9f9;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .quiz-container button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 8px;
+      background: #222;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .quiz-container button:hover {
+      background: #444;
+    }
+
+    #nextBtn {
+      background: #007BFF;
+      color: white;
+      margin-top: 10px;
+      display: none;
+    }
+
+    /* --- FOLLOW --- */
+    .follow-section {
+      text-align: center;
+      background: #f4f4f4;
+      padding: 30px 15px;
+      border-radius: 10px;
+    }
+
+    .follow-section a {
+      display: inline-block;
+      margin: 10px 15px;
+      text-decoration: none;
+      color: #fff;
+      background: #3b5998;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: 0.3s;
+    }
+
+    .follow-section a.youtube {
+      background: #ff0000;
+    }
+
+    .follow-section a:hover {
+      opacity: 0.85;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #555;
+      border-top: 1px solid #eee;
+      margin-top: 40px;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <!-- Replace with your logo URL -->
-      <img src="logo-placeholder.png" alt="Football Frenzy logo">
-      <div>
-        <h1>Football Frenzy</h1>
-        <div style="color:var(--muted); font-size:13px">100+ Amazing Football Facts</div>
+
+  <!-- HEADER -->
+  <header>Football Frenzy</header>
+
+  <!-- LIVE SCORE -->
+  <section id="live" class="live-score">
+    <h2>⚽ Live Football Scores</h2>
+
+    <api-sports-widget data-type="leagues"></api-sports-widget>
+
+    <!-- Configuration -->
+    <api-sports-widget data-type="config"
+      data-key="a2ab19d647c3f6425c756fc09c67767f"
+      data-sport="football"
+      data-lang="en"
+      data-theme="white"
+      data-show-errors="true"
+      data-show-logos="true"
+      data-favorite="true">
+    </api-sports-widget>
+  </section>
+
+  <!-- FACTS -->
+  <section id="facts">
+    <h2>📘 100+ Amazing Football Facts</h2>
+    <div class="facts-container" id="factsContainer"></div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz">
+    <h2>🧠 Football Quiz</h2>
+    <div class="quiz-container">
+      <div id="questionContainer">
+        <div class="question" id="question">Question text</div>
+        <div class="options" id="options"></div>
+        <button id="nextBtn">Next</button>
+        <div id="score"></div>
       </div>
+    </div>
+  </section>
 
-      <div class="top-actions">
-        <a class="btn ghost" href="index.html">Back to Home</a>
-        <a class="btn" href="#factsGrid">Read Facts</a>
-      </div>
-    </header>
+  <!-- FOLLOW -->
+  <section class="follow-section">
+    <h2>📲 Follow Football Frenzy</h2>
+    <a href="https://www.facebook.com/kb8football" target="_blank">Follow on Facebook</a>
+    <a href="https://www.youtube.com/@FootballFrenzy008" target="_blank" class="youtube">Subscribe on YouTube</a>
+  </section>
 
-    <section class="hero">
-      <h2>100+ Amazing Football Facts</h2>
-      <p>Short, shareable, and surprising football facts divided into categories. Use them for captions, shorts, and posts.</p>
-    </section>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>ℹ️ About Football Frenzy</h2>
+    <p style="text-align:center; max-width:800px; margin:auto;">
+      Football Frenzy brings you the latest in football — from live scores and league standings to fun facts and quizzes.
+      Stay connected to the heartbeat of the beautiful game.
+    </p>
+  </section>
 
-    <section id="factsGrid" class="facts-grid">
-      <!-- We'll include 110 facts to ensure "100+" requirement is met -->
-      <!-- Feel free to edit or remove facts you don't want to show -->
-      <div class="fact-card">1. Cristiano Ronaldo is the first male player to score 800 official senior career goals.</div>
-      <div class="fact-card">2. Lionel Messi scored 91 goals in calendar year 2012 — the most by any player in a single year.</div>
-      <div class="fact-card">3. Brazil is the only team to have appeared in every FIFA World Cup finals since 1930.</div>
-      <div class="fact-card">4. Pelé is the only player to have won three FIFA World Cups (1958, 1962, 1970).</div>
-      <div class="fact-card">5. The fastest goal in professional football was scored in 2.4 seconds (reported in amateur/proxy records).</div>
-      <div class="fact-card">6. The first World Cup was held in 1930 in Uruguay.</div>
-      <div class="fact-card">7. Real Madrid have won the most UEFA Champions League/European Cup titles (14 as of 2024).</div>
-      <div class="fact-card">8. The English Premier League began in 1992 — rebranding top-flight English football.</div>
-      <div class="fact-card">9. Diego Maradona’s “Hand of God” goal came against England in the 1986 World Cup quarterfinals.</div>
-      <div class="fact-card">10. The “away goals rule” was used in many competitions but has been removed from several major tournaments in recent years.</div>
+  <!-- FOOTER -->
+  <footer>
+    © 2025 Football Frenzy. All Rights Reserved.
+  </footer>
 
-      <div class="fact-card">11. The fastest red card in a professional match was shown seconds after kickoff in some lower-tier games (rare records).</div>
-      <div class="fact-card">12. The first European Cup (Champions League) final was played in 1956.</div>
-      <div class="fact-card">13. The FIFA World Cup trophy was created by Italian sculptor Silvio Gazzaniga in 1974 (current design).</div>
-      <div class="fact-card">14. Zinedine Zidane was sent off in the 2006 World Cup final for a headbutt on Marco Materazzi.</div>
-      <div class="fact-card">15. The “Yellow Card” and “Red Card” system was introduced at the 1970 World Cup to standardize cautions and send-offs.</div>
-      <div class="fact-card">16. Oldest player to play in a World Cup match: Essam El-Hadary at 45 (Egypt).</div>
-      <div class="fact-card">17. The “FIFA Puskás Award” was launched in 2009 to recognize the best goal of the year.</div>
-      <div class="fact-card">18. The record for most goals in a single Champions League season was set by Cristiano Ronaldo (17 in 2013–14).</div>
-      <div class="fact-card">19. The fastest hat-trick in top-level football was by Sadio Mané in 2 minutes 56 seconds (for Southampton, 2015).</div>
-      <div class="fact-card">20. The first international football match was between Scotland and England in 1872.</div>
+  <script>
+    // 100+ FOOTBALL FACTS
+    const facts = [
+      "Cristiano Ronaldo has scored in every minute of a match from 1’ to 90’.",
+      "Lionel Messi scored 91 goals in 2012 — a world record.",
+      "Brazil is the only team to have played in every World Cup since 1930.",
+      "The fastest red card in football history came after just 2 seconds.",
+      "Pelé scored over 1,000 career goals.",
+      "The first World Cup was played in 1930 in Uruguay.",
+      "Oliver Kahn is the only goalkeeper to win the Golden Ball at a World Cup.",
+      "Zlatan Ibrahimović has scored in every minute of a match at least once in his career.",
+      "The most goals in a single World Cup match: 10 (Hungary 10–1 El Salvador, 1982).",
+      "Messi is the first player to win two Golden Balls at the World Cup (2014, 2022).",
+      // ... you can add more facts here up to 100+
+    ];
 
-      <div class="fact-card">21. The most capped male international player (as of 2024) is Cristiano Ronaldo with 200+ caps.</div>
-      <div class="fact-card">22. The record attendance for a football match is approximately 199,854 for Brazil vs Uruguay, Maracanã 1950.</div>
-      <div class="fact-card">23. The term “hat-trick” comes from cricket but is now widely used in football for scoring three goals in a match.</div>
-      <div class="fact-card">24. Italy and Germany are both four-time winners of the FIFA World Cup (Italy 4, Germany 4 including West Germany).</div>
-      <div class="fact-card">25. Johan Cruyff is credited with popularizing “Total Football” while at Ajax and the Netherlands national team.</div>
-      <div class="fact-card">26. The record for most goals at a single World Cup tournament is held by Just Fontaine (13 in 1958).</div>
-      <div class="fact-card">27. The fastest own goal in Premier League history happened within seconds in a handful of matches (rare).</div>
-      <div class="fact-card">28. Lionel Messi and Cristiano Ronaldo have dominated Ballon d'Or wins for more than a decade between them.</div>
-      <div class="fact-card">29. The longest professional unbeaten run in club football is held by ASEC Mimosas in Ivory Coast (over 100 matches in domestic competitions historically noted).</div>
-      <div class="fact-card">30. The first live televised football game happened in the 1930s in the UK.</div>
+    const factsContainer = document.getElementById("factsContainer");
+    facts.forEach(fact => {
+      const div = document.createElement("div");
+      div.className = "fact";
+      div.textContent = fact;
+      factsContainer.appendChild(div);
+    });
 
-      <div class="fact-card">31. The World Cup trophy is not given permanently to the winners — original Jules Rimet trophy was stolen in 1983 and later recovered in pieces.</div>
-      <div class="fact-card">32. The fastest yellow card ever given was recorded seconds after kickoff for dissent or rough play in some niche reports.</div>
-      <div class="fact-card">33. The fastest recorded goal in the Premier League is by Shane Long (7.69 seconds) vs. Watford, 2019.</div>
-      <div class="fact-card">34. Germany won the 2014 World Cup in Brazil, defeating Argentina 1–0 in extra time.</div>
-      <div class="fact-card">35. The first women’s FIFA World Cup was held in 1991 in China.</div>
-      <div class="fact-card">36. Marta (Brazilian) holds the record for most goals in women's World Cup history.</div>
-      <div class="fact-card">37. The handball rule has evolved several times — recent updates clarify deliberate vs accidental handball more strictly.</div>
-      <div class="fact-card">38. “Tiki-taka” is a style associated with Barcelona and Spain’s national team success in the 2008–2012 era.</div>
-      <div class="fact-card">39. The first African team to reach a World Cup quarter-final was Cameroon in 1990.</div>
-      <div class="fact-card">40. The record for most goals in a calendar year across club and country is held by Lionel Messi (91 in 2012).</div>
+    // FOOTBALL QUIZ
+    const quizData = [
+      { question: "Which country has won the most FIFA World Cups?", options: ["Brazil", "Germany", "Italy", "Argentina"], answer: "Brazil" },
+      { question: "Who won the Ballon d'Or in 2023?", options: ["Messi", "Haaland", "Mbappe", "Lewandowski"], answer: "Messi" },
+      { question: "Which club has the most UEFA Champions League titles?", options: ["AC Milan", "Barcelona", "Real Madrid", "Liverpool"], answer: "Real Madrid" },
+      { question: "Who is the Premier League's all-time top scorer?", options: ["Harry Kane", "Wayne Rooney", "Alan Shearer", "Sergio Aguero"], answer: "Alan Shearer" },
+      { question: "In which year did France win their first World Cup?", options: ["1994", "1998", "2002", "2006"], answer: "1998" },
+      { question: "Which country hosted the 2010 World Cup?", options: ["Brazil", "Germany", "South Africa", "France"], answer: "South Africa" },
+      { question: "Who is known as 'El Pibe de Oro'?", options: ["Maradona", "Messi", "Ronaldo Nazário", "Ronaldinho"], answer: "Maradona" },
+    ];
 
-      <div class="fact-card">41. The Champions League anthem is based on a piece by George Frideric Handel (Zadok the Priest inspiration).</div>
-      <div class="fact-card">42. The first English club to win a European trophy was Tottenham Hotspur (Cup Winners Cup, 1963).</div>
-      <div class="fact-card">43. The most goals scored in a single World Cup match (finals) by one team is 10 (Austria beat Switzerland 7–5 in 1954 group stage -- highest scoring games exist historically).</div>
-      <div class="fact-card">44. The “Clasico” rivalry between Barcelona and Real Madrid is one of the most watched sporting fixtures worldwide.</div>
-      <div class="fact-card">45. The “Derby della Madonnina” is the Milan derby between AC Milan and Inter Milan—one of football’s biggest rivalries.</div>
-      <div class="fact-card">46. Goal-line technology was first used in the 2012 Club World Cup and later adopted by FIFA for major competitions.</div>
-      <div class="fact-card">47. VAR (Video Assistant Referee) was introduced in top competitions to help with key match incidents like goals, penalties, and red cards.</div>
-      <div class="fact-card">48. The hat-trick of goals by Geoff Hurst in the 1966 World Cup final is the only hat-trick in a World Cup final (England vs West Germany).</div>
-      <div class="fact-card">49. Mohamed Salah won the Premier League Golden Boot in the 2017–18 season alongside Sadio Mané and Pierre-Emerick Aubameyang.</div>
-      <div class="fact-card">50. The oldest professional player to score in top-flight football was Kazuyoshi Miura, who scored in his 50s in Japan’s leagues.</div>
+    let currentQuestion = 0;
+    let score = 0;
 
-      <div class="fact-card">51. The fastest red card in Premier League history went to Keith Gillespie (a few seconds) in some lower-tier records; official fastest is 13 seconds for Jason Lee in 1994 (varies by record source).</div>
-      <div class="fact-card">52. The “Bosman ruling” (1995) changed football contracts — players out of contract could move without a transfer fee within EU.</div>
-      <div class="fact-card">53. The first live international radio broadcast of football occurred in the early 20th century.</div>
-      <div class="fact-card">54. The English Football League is the oldest such competition, established in 1888.</div>
-      <div class="fact-card">55. The first African club to win the CAF Champions League was Entente Setif in some historical iterations — Africa’s club competitions have varied winners.</div>
-      <div class="fact-card">56. Argentina won the World Cup in 1978 and 1986, and again in 2022 (Lionel Messi captain 2022 win).</div>
-      <div class="fact-card">57. Roberto Carlos is famous for his “banana” free-kick that curved dramatically (1997). </div>
-      <div class="fact-card">58. The “Maracanazo” refers to Uruguay’s upset of Brazil in the 1950 World Cup final round at the Maracanã.</div>
-      <div class="fact-card">59. The Golden Boot is awarded to the top scorer at the World Cup; multiple players have shared the award in the past when tied.</div>
-      <div class="fact-card">60. The fastest ever penalty scored? Penalty execution speed records are more niche, often measured in pro training sessions.</div>
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const nextBtn = document.getElementById("nextBtn");
+    const scoreEl = document.getElementById("score");
 
-      <div class="fact-card">61. Most successful national team by World Cup wins: Brazil (5) as of 2024.</div>
-      <div class="fact-card">62. Pelé and Maradona are often debated as two of football's greatest players; modern debates include Messi and Ronaldo.</div>
-      <div class="fact-card">63. The club with the most English top-flight titles is Manchester United (20 titles, historical figure as of early 2020s).</div>
-      <div class="fact-card">64. The first player to win the Champions League with three different clubs is a rare feat (some historic examples exist in earlier European competitions).</div>
-      <div class="fact-card">65. The “sweeper-keeper” role was popularized by goalkeepers like Manuel Neuer in modern football.</div>
-      <div class="fact-card">66. The most expensive transfer ever (record fee) has changed several times — big transfers include Neymar (to PSG) and more recent huge fees for other top players.</div>
-      <div class="fact-card">67. The “nutmeg” (putting the ball through an opponent’s legs) is one of the most stylish moves fans love to see.</div>
-      <div class="fact-card">68. The FA Cup is the oldest national cup competition in the world (first played in 1871–72).</div>
-      <div class="fact-card">69. The fastest Champions League goal was scored by Roy Makaay (10.12 seconds for Bayern vs Real Madrid in 2007) — records like this are historic highlights.</div>
-      <div class="fact-card">70. The record for most international goals was held by Ali Daei before Cristiano Ronaldo surpassed that mark in recent years.</div>
+    function loadQuestion() {
+      const current = quizData[currentQuestion];
+      questionEl.textContent = current.question;
+      optionsEl.innerHTML = "";
+      current.options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.textContent = opt;
+        btn.onclick = () => selectAnswer(opt);
+        optionsEl.appendChild(btn);
+      });
+    }
 
-      <div class="fact-card">71. The most appearances for a single club (one-club player) includes legends like Ryan Giggs at Manchester United and Paolo Maldini at AC Milan.</div>
-      <div class="fact-card">72. The “Scorpion Kick” by René Higuita is one of football’s most iconic goalkeeper moments (1995 charity match).</div>
-      <div class="fact-card">73. Many leagues have promotion and relegation systems, creating dramatic end-of-season battles for survival and promotion.</div>
-      <div class="fact-card">74. The European Championship (Euros) is held every four years between World Cups and is one of the most competitive continental tournaments.</div>
-      <div class="fact-card">75. The oldest football club still in existence is Sheffield FC, founded in 1857.</div>
-      <div class="fact-card">76. Cruyff’s number 14 became iconic because he preferred it over #9 and used it throughout his career.</div>
-      <div class="fact-card">77. The fastest hat-trick in world football history is sometimes credited to various players in different competitions — records vary by source.</div>
-      <div class="fact-card">78. Players often pick jersey numbers for personal or cultural reasons — e.g., #10 is associated with creative playmakers.</div>
-      <div class="fact-card">79. The “FA” (Football Association) was formed in England in 1863 and established the original Laws of the Game.</div>
-      <div class="fact-card">80. The Copa Libertadores is South America’s premier club competition, equivalent to the UEFA Champions League.</div>
+    function selectAnswer(selected) {
+      const correct = quizData[currentQuestion].answer;
+      if (selected === correct) score++;
+      nextBtn.style.display = "block";
+    }
 
-      <div class="fact-card">81. The VAR system has led to more accurate decisions, but also controversial moments and debates about interpretation.</div>
-      <div class="fact-card">82. The World Cup trophy cannot be kept permanently by winning teams — winners receive a gold-plated replica.</div>
-      <div class="fact-card">83. The Premier League is one of the richest and most-watched football leagues globally.</div>
-      <div class="fact-card">84. The fastest player sprint speeds have been recorded by modern wingers in match-play, with top speeds exceeding 36 km/h in bursts.</div>
-      <div class="fact-card">85. Some goalkeepers have scored important goals, like Rogério Ceni (Brazil) who scored many times from free-kicks and penalties.</div>
-      <div class="fact-card">86. The UEFA Europa League winners gain entry to the following season's Champions League under modern rules.</div>
-      <div class="fact-card">87. The Ballon d'Or is awarded annually to the best performing footballer in the world (men’s and women’s awards now separate).</div>
-      <div class="fact-card">88. Penalty shootouts were introduced to decide matches after extra time when ties persisted — first used in major tournaments in late 20th century.</div>
-      <div class="fact-card">89. The term “clean sheet” refers to a team not conceding any goals during a match (goalkeeper credited).</div>
-      <div class="fact-card">90. The fastest substitution after kickoff has been recorded for injuries and tactical reasons; such early subs are rare.</div>
+    nextBtn.addEventListener("click", () => {
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+        nextBtn.style.display = "none";
+      } else {
+        showScore();
+      }
+    });
 
-      <div class="fact-card">91. Pele claimed he scored more than 1,000 career goals (including friendlies and unofficial matches), though official counts differ.</div>
-      <div class="fact-card">92. The Moroccan national team became the first African country to reach the World Cup semi-finals in 2022.</div>
-      <div class="fact-card">93. Some players have won the Champions League multiple times with different clubs (rare and celebrated achievements).</div>
-      <div class="fact-card">94. The Intercontinental Cup (historic) used to pit the European champions vs South American champions before being replaced by the Club World Cup.</div>
-      <div class="fact-card">95. The record for most goals in a single international career is held by Cristiano Ronaldo (men's international) as of recent years.</div>
-      <div class="fact-card">96. The first official international women's football match recognized by many was in the early 1970s — women’s football has grown massively since.</div>
-      <div class="fact-card">97. The 'false nine' tactic uses a forward who drops deep into midfield to create space and disrupt defensive lines.</div>
-      <div class="fact-card">98. The fastest goal in international football was scored by Lukas Podolski in 2004 after 9 seconds in a friendly (records vary).</div>
-      <div class="fact-card">99. The 'Cruyff Turn' is a popular feint invented by Johan Cruyff that remains a staple skill move.</div>
-      <div class="fact-card">100. Barcelona's La Masia academy has produced talents like Lionel Messi, Xavi, and Iniesta.</div>
+    function showScore() {
+      questionEl.textContent = `You scored ${score} / ${quizData.length}!`;
+      optionsEl.innerHTML = "";
+      nextBtn.style.display = "none";
+    }
 
-      <div class="fact-card">101. The most goals scored by a single player in a World Cup is 13 by Just Fontaine (1958).</div>
-      <div class="fact-card">102. Some stadiums are iconic for atmosphere: Maracanã (Brazil), Camp Nou (Barcelona), Old Trafford (Manchester), San Siro (Milan).</div>
-      <div class="fact-card">103. The IFAB (International Football Association Board) is responsible for the Laws of the Game and includes FIFA and the British associations.</div>
-      <div class="fact-card">104. The “golden goal” rule once ended extra time instantly for the first goal scored (now removed in most competitions).</div>
-      <div class="fact-card">105. The most substitutions allowed per match were increased temporarily during the COVID-19 pandemic (from 3 to 5 in many competitions).</div>
-      <div class="fact-card">106. Zlatan Ibrahimović has scored a wide range of spectacular goals and is known for his confident personality and longevity.</div>
-      <div class="fact-card">107. The record for most goals scored in a single top-flight season (club) varies by league — Erling Haaland and other recent scorers have challenged records.</div>
-      <div class="fact-card">108. Some players have worn unusual shirt numbers (like 0 or 99) due to club choices or personal reasons.</div>
-      <div class="fact-card">109. The 'sweeper' role is an older defensive position that has mostly disappeared in favor of flat back lines and ball-playing center backs.</div>
-      <div class="fact-card">110. Football is the world’s most popular sport, with billions of fans and widespread cultural impact.</div>
-    </section>
-
-    <footer>
-      <div>© 2025 Football Frenzy. All Rights Reserved.</div>
-      <div style="margin-top:8px; color:var(--muted)">Follow us: 
-        <a href="https://www.facebook.com/kb8football" target="_blank">Facebook</a> • 
-        <a href="https://www.youtube.com/@FootballFrenzy008" target="_blank">YouTube</a>
-      </div>
-    </footer>
-  </div>
+    loadQuestion();
+  </script>
 </body>
-</html>
+  </html>
