@@ -2,256 +2,241 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FOOTBALL FRENZY</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Football Frenzy</title>
   <style>
+    /* --- GLOBAL STYLE --- */
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: url('https://images.unsplash.com/photo-1547347298-4074fc3086f4?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-      backdrop-filter: blur(6px);
-      color: white;
-    }
-
-    .overlay {
-      background-color: rgba(0, 0, 0, 0.7);
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
+      font-family: 'Georgia', serif;
+      background-color: #ffffff;
+      color: #222;
+      line-height: 1.6;
     }
 
     header {
-      position: sticky;
-      top: 0;
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 15px 20px;
-      font-size: 28px;
-      font-weight: bold;
       text-align: center;
+      padding: 25px 15px;
+      font-size: 36px;
       letter-spacing: 2px;
-      z-index: 10;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 10px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 8px 15px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #00ffcc;
-    }
-
-    main {
-      position: relative;
-      padding: 20px;
+      font-weight: 600;
+      border-bottom: 2px solid #ddd;
     }
 
     section {
-      margin-bottom: 40px;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 20px;
-      border-radius: 10px;
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
     }
 
     h2 {
-      font-size: 26px;
-      font-weight: bold;
-      margin-bottom: 15px;
+      font-family: 'Georgia', serif;
+      font-size: 28px;
       text-align: center;
-      border-bottom: 2px solid #00ffcc;
-      padding-bottom: 10px;
+      margin-bottom: 25px;
+      color: #111;
     }
 
-    iframe {
+    /* --- LIVESCORE --- */
+    .live-score {
+      background: #f7f7f7;
       border-radius: 10px;
-    }
-
-    .ad {
-      text-align: center;
-      margin: 15px 0;
-      padding: 10px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 8px;
-      color: #ccc;
-      font-size: 14px;
-    }
-
-    footer {
-      background: rgba(0, 0, 0, 0.9);
       padding: 20px;
-      text-align: center;
-      color: #ccc;
-      font-size: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
-    footer a {
-      color: #00ffcc;
-      text-decoration: none;
-      margin: 0 8px;
+    /* --- FACTS --- */
+    .facts-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
 
-    footer a:hover {
-      text-decoration: underline;
+    .fact {
+      background: #fafafa;
+      border-radius: 10px;
+      padding: 15px;
+      border: 1px solid #eee;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
     }
 
+    /* --- QUIZ --- */
     .quiz-container {
-      max-width: 600px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 20px;
+      background: #f9f9f9;
       border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       text-align: center;
     }
 
-    .question {
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
-
-    .options button {
+    .quiz-container button {
       display: block;
       width: 100%;
+      padding: 12px;
       margin: 8px 0;
-      padding: 10px;
       border: none;
       border-radius: 8px;
-      background: #00ffcc;
-      color: #000;
+      background: #222;
+      color: #fff;
       font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
     }
 
-    .options button:hover {
-      background: #00cba9;
+    .quiz-container button:hover {
+      background: #444;
     }
 
     #nextBtn {
-      background: #ffcc00;
-      color: #000;
-      margin-top: 15px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+      background: #007BFF;
+      color: white;
+      margin-top: 10px;
       display: none;
-      font-weight: bold;
     }
 
-    #score {
-      font-size: 20px;
-      margin-top: 20px;
+    /* --- FOLLOW --- */
+    .follow-section {
+      text-align: center;
+      background: #f4f4f4;
+      padding: 30px 15px;
+      border-radius: 10px;
     }
 
-    @media (max-width: 768px) {
-      h2 { font-size: 22px; }
-      header { font-size: 24px; }
+    .follow-section a {
+      display: inline-block;
+      margin: 10px 15px;
+      text-decoration: none;
+      color: #fff;
+      background: #3b5998;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: 0.3s;
+    }
+
+    .follow-section a.youtube {
+      background: #ff0000;
+    }
+
+    .follow-section a:hover {
+      opacity: 0.85;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #555;
+      border-top: 1px solid #eee;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <div class="overlay"></div>
 
-  <header>𝑭𝑶𝑶𝑻𝑩𝑨𝑳𝑳 𝑭𝑹𝑬𝑵𝒁𝒀</header>
+  <!-- HEADER -->
+  <header>Football Frenzy</header>
 
-  <nav>
-    <a href="#live">Live Score</a>
-    <a href="#facts">Facts</a>
-    <a href="#stats">Stats</a>
-    <a href="#quiz">Quiz</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <!-- LIVE SCORE -->
+  <section id="live" class="live-score">
+    <h2>⚽ Live Football Scores</h2>
 
-  <main>
-    <div class="ad">[Top Banner Ad Placeholder]</div>
+    <div style="background:#0a0a0a; border-radius:20px; padding:20px;">
+      <api-sports-widget
+        data-type="livescore"
+        data-theme="dark"
+        data-lang="en"
+        data-bg="#0a0a0a"
+        data-accent="#00ff88"
+        data-show-errors="true"
+      ></api-sports-widget>
+    </div>
+  </section>
 
-    <!-- LIVE SCORE SECTION -->
-    <section id="live">
-      <h2>⚽ Live Score</h2>
-      <iframe src="https://www.scorebat.com/embed/livescore/" frameborder="0" width="100%" height="600" allowfullscreen></iframe>
-    </section>
+  <!-- FACTS -->
+  <section id="facts">
+    <h2>📘 100+ Amazing Football Facts</h2>
+    <div class="facts-container" id="factsContainer"></div>
+  </section>
 
-    <!-- FACTS SECTION -->
-    <section id="facts">
-      <h2>🧠 Football Facts</h2>
-      <article>
-        <p>⚡ Cristiano Ronaldo has scored in every minute of a match from 1' to 90'.</p>
-        <p>🔥 Lionel Messi scored 91 goals in 2012 — a world record.</p>
-        <p>🏆 Brazil is the only team to have played in every World Cup since 1930.</p>
-      </article>
-      <div class="ad">[In-article Ad Placeholder]</div>
-    </section>
-
-    <!-- STATS SECTION -->
-    <section id="stats">
-      <h2>📊 Football Stats</h2>
-      <iframe src="https://www.scorebat.com/embed/standings/" frameborder="0" width="100%" height="600" allowfullscreen></iframe>
-    </section>
-
-    <!-- QUIZ SECTION -->
-    <section id="quiz">
-      <h2>🧩 Football Quiz</h2>
-      <div class="quiz-container">
-        <div id="questionContainer">
-          <div class="question" id="question">Question text</div>
-          <div class="options" id="options"></div>
-          <button id="nextBtn">Next</button>
-          <div id="score"></div>
-        </div>
-        <div class="ad">[Quiz Ad Placeholder]</div>
+  <!-- QUIZ -->
+  <section id="quiz">
+    <h2>🧠 Football Quiz</h2>
+    <div class="quiz-container">
+      <div id="questionContainer">
+        <div class="question" id="question">Question text</div>
+        <div class="options" id="options"></div>
+        <button id="nextBtn">Next</button>
+        <div id="score"></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about">
-      <h2>ℹ️ About Us</h2>
-      <p><strong>Football Frenzy</strong> is your home for everything football — from live scores and stats to fun facts and football quizzes.
-      We bring fans closer to the beautiful game with updates, history, and knowledge tests.</p>
-    </section>
+  <!-- FOLLOW -->
+  <section class="follow-section">
+    <h2>📲 Follow Football Frenzy</h2>
+    <a href="https://www.facebook.com/kb8football" target="_blank">Follow on Facebook</a>
+    <a href="https://www.youtube.com/@FootballFrenzy008" target="_blank" class="youtube">Subscribe on YouTube</a>
+  </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact">
-      <h2>📬 Contact Us</h2>
-      <p><strong>Email:</strong> footballfrenzy@gmail.com</p>
-    </section>
-  </main>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>ℹ️ About Football Frenzy</h2>
+    <p style="text-align:center; max-width:800px; margin:auto;">
+      Football Frenzy brings you the latest in football — from live scores and league standings to fun facts and quizzes.
+      Stay connected to the heartbeat of the beautiful game.
+    </p>
+  </section>
 
+  <!-- FOOTER -->
   <footer>
-    <p>© 2025 Football Frenzy | All Rights Reserved</p>
-    <div class="ad">[Footer Ad Placeholder]</div>
+    © 2025 Football Frenzy. All Rights Reserved.
   </footer>
 
+  <!-- API-SPORTS SCRIPT -->
+  <script type="module" src="https://widgets.api-sports.io/2.0.3/widgets.js"></script>
+
   <script>
+    // 100+ FOOTBALL FACTS
+    const facts = [
+      "Cristiano Ronaldo has scored in every minute of a match from 1’ to 90’.",
+      "Lionel Messi scored 91 goals in 2012 — a world record.",
+      "Brazil is the only team to have played in every World Cup since 1930.",
+      "The fastest red card in football history came after just 2 seconds.",
+      "Pelé scored over 1,000 career goals.",
+      "The first World Cup was played in 1930 in Uruguay.",
+      "Oliver Kahn is the only goalkeeper to win the Golden Ball at a World Cup.",
+      "Zlatan Ibrahimović has scored in every minute of a match at least once in his career.",
+      "The most goals in a single World Cup match: 10 (Hungary 10–1 El Salvador, 1982).",
+      "Messi is the first player to win two Golden Balls at the World Cup (2014, 2022).",
+    ];
+
+    const factsContainer = document.getElementById("factsContainer");
+    facts.forEach(fact => {
+      const div = document.createElement("div");
+      div.className = "fact";
+      div.textContent = fact;
+      factsContainer.appendChild(div);
+    });
+
+    // FOOTBALL QUIZ
     const quizData = [
       { question: "Which country has won the most FIFA World Cups?", options: ["Brazil", "Germany", "Italy", "Argentina"], answer: "Brazil" },
       { question: "Who won the Ballon d'Or in 2023?", options: ["Messi", "Haaland", "Mbappe", "Lewandowski"], answer: "Messi" },
       { question: "Which club has the most UEFA Champions League titles?", options: ["AC Milan", "Barcelona", "Real Madrid", "Liverpool"], answer: "Real Madrid" },
       { question: "Who is the Premier League's all-time top scorer?", options: ["Harry Kane", "Wayne Rooney", "Alan Shearer", "Sergio Aguero"], answer: "Alan Shearer" },
       { question: "In which year did France win their first World Cup?", options: ["1994", "1998", "2002", "2006"], answer: "1998" },
+      { question: "Which country hosted the 2010 World Cup?", options: ["Brazil", "Germany", "South Africa", "France"], answer: "South Africa" },
+      { question: "Who is known as 'El Pibe de Oro'?", options: ["Maradona", "Messi", "Ronaldo Nazário", "Ronaldinho"], answer: "Maradona" },
     ];
 
     let currentQuestion = 0;
     let score = 0;
 
-    const questionEl = document.getElementById('question');
-    const optionsEl = document.getElementById('options');
-    const nextBtn = document.getElementById('nextBtn');
-    const scoreEl = document.getElementById('score');
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const nextBtn = document.getElementById("nextBtn");
+    const scoreEl = document.getElementById("score");
 
     function loadQuestion() {
       const current = quizData[currentQuestion];
@@ -290,4 +275,4 @@
     loadQuestion();
   </script>
 </body>
-</html>
+  </html>
